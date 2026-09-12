@@ -196,8 +196,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // For recurring items that were checked, reset them back to unchecked for next week
         ContentValues cv = new ContentValues();
         cv.put(COL_CHECKED, 0);
-        db.update(TABLE_ITEMS, cv, COL_CHECKED + " = 1 AND " + COL_RECURRING + " = 1", null);
-        return deleted;
+        int reset = db.update(TABLE_ITEMS, cv, COL_CHECKED + " = 1 AND " + COL_RECURRING + " = 1", null);
+        return deleted + reset;
     }
 
     public void resetAllRecurringStaples() {

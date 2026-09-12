@@ -18,6 +18,7 @@ import com.yeaminsheikh.smartshopping.models.BudgetSummary;
 import com.yeaminsheikh.smartshopping.utils.CurrencyFormatter;
 import com.yeaminsheikh.smartshopping.utils.PreferenceManager;
 
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -61,7 +62,7 @@ public class BudgetOverviewActivity extends AppCompatActivity {
         rvBudgetCategories.setLayoutManager(new LinearLayoutManager(this));
         rvBudgetCategories.setAdapter(adapter);
 
-        etBudgetLimit.setText(String.format("%.2f", prefManager.getBudgetLimit()));
+        etBudgetLimit.setText(String.format(Locale.US, "%.2f", prefManager.getBudgetLimit()));
 
         btnUpdateBudget.setOnClickListener(v -> {
             try {
