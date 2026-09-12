@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <defs>
+    <linearGradient id="shop-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+  <!-- Shopping Basket & Check Emblem -->
+  <g transform="translate(8, 7)">
+    <rect x="0" y="0" width="50" height="50" rx="14" fill="url(#shop-grad)" />
+    <!-- Basket Outline -->
+    <path d="M12 22 L16 40 H34 L38 22 Z" fill="#FFFFFF" fill-opacity="0.2" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round" />
+    <path d="M17 22 L25 12 L33 22" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+    <!-- Check Accent -->
+    <polyline points="20 30 24 34 31 26" fill="none" stroke="#FEF08A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+  <!-- Typography -->
+  <text x="68" y="28" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="20" fill="#0F172A" letter-spacing="0.5">SMART CART</text>
+  <text x="212" y="28" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="20" fill="#059669" letter-spacing="0.5">APP</text>
+  <text x="68" y="47" font-family="system-ui, sans-serif" font-weight="700" font-size="9.5" fill="#64748B" letter-spacing="1.8">MOBILE GROCERY & PANTRY TRACKER</text>
+</svg>
