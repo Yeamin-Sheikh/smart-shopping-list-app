@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Application Details -->
+    <string name="app_name">Smart Shopping List</string>
+    <string name="title_add_edit_item">Add Shopping Item</string>
+    <string name="title_edit_item">Edit Shopping Item</string>
+    <string name="title_budget_overview">Budget &amp; Analytics</string>
+    <string name="title_category_manager">Manage Categories</string>
+
+    <!-- Main Screen Labels -->
+    <string name="search_hint">Search grocery items, brands, aisles...</string>
+    <string name="filter_all">All Categories</string>
+    <string name="empty_list_title">Your Shopping List is Empty</string>
+    <string name="empty_list_subtitle">Tap the plus button below to add your groceries, produce, or pantry essentials.</string>
+    <string name="items_progress">%1$d of %2$d items checked</string>
+    <string name="cart_total_prefix">Estimated Cart: </string>
+
+    <!-- Item Editor Fields -->
+    <string name="hint_item_name">Item Name (e.g., Organic Whole Milk)</string>
+    <string name="hint_quantity">Quantity</string>
+    <string name="hint_unit">Unit (pcs, kg, lbs, pack)</string>
+    <string name="hint_estimated_price">Estimated Unit Price ($)</string>
+    <string name="hint_store_name">Store Name (e.g. Trader Joe's, Costco)</string>
+    <string name="hint_aisle">Aisle / Shelf (e.g. Aisle 4B)</string>
+    <string name="hint_notes">Notes / Brand Preferences</string>
+    <string name="label_priority">Priority Level</string>
+    <string name="priority_high">High Priority</string>
+    <string name="priority_medium">Medium Priority</string>
+    <string name="priority_low">Low Priority</string>
+    <string name="label_recurring">Keep as recurring weekly staple</string>
+    <string name="btn_save_item">Save Shopping Item</string>
+    <string name="btn_delete_item">Delete Item</string>
+
+    <!-- Budget Analytics -->
+    <string name="label_budget_limit">Monthly / Trip Budget Target</string>
+    <string name="label_estimated_total">Total Estimated Cost</string>
+    <string name="label_checked_total">In-Cart Purchased Cost</string>
+    <string name="label_remaining_budget">Remaining Available Budget</string>
+    <string name="label_category_spending">Spending by Category</string>
+
+    <!-- Menu Options -->
+    <string name="menu_budget">Budget Overview</string>
+    <string name="menu_categories">Categories</string>
+    <string name="menu_clear_completed">Clear Completed Items</string>
+    <string name="menu_reset_recurring">Reset Recurring Staples</string>
+    <string name="confirm_clear_completed">Are you sure you want to remove all checked items from this list?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+</resources>

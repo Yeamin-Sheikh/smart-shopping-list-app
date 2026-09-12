@@ -1,29 +1,28 @@
 {
-  "appName": "SmartCart Mobile",
-  "version": "1.2.0",
+  "appName": "Smart Shopping List",
+  "appType": "Native Android (Java/Gradle)",
+  "packageName": "com.yeaminsheikh.smartshopping",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "compileSdk": 34,
+  "minSdk": 24,
+  "targetSdk": 34,
   "currency": {
     "symbol": "$",
-    "code": "USD",
-    "position": "prefix"
+    "code": "USD"
   },
-  "defaultBudget": 75.00,
+  "defaultBudget": 250.00,
   "budgetWarningThresholdPercent": 85,
-  "enableOfflineCache": true,
-  "autoSortByAisle": true,
-  "defaultList": "weekly-groceries",
-  "categories": [
-    "produce",
-    "dairy",
-    "bakery",
-    "meat",
-    "pantry",
-    "frozen",
-    "beverages",
-    "household"
+  "defaultAisleSorting": true,
+  "defaultCategories": [
+    "Produce",
+    "Dairy & Eggs",
+    "Bakery",
+    "Meat & Seafood",
+    "Pantry",
+    "Frozen",
+    "Beverages",
+    "Household"
   ],
-  "preferences": {
-    "compactView": false,
-    "showEstimatedPrices": true,
-    "hapticFeedback": true
-  }
+  "storage": "Local SQLite (SQLiteOpenHelper)"
 }
