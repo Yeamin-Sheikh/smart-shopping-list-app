@@ -64,14 +64,14 @@ assert.strictEqual(store.getActiveList().items.length, initialItemsCount);
 console.log('✓ Item deletion verified');
 
 // Test 6: Image assets verification
-const imagesDir = path.resolve('assets/images');
+const imagesDir = path.resolve(import.meta.dirname, '../assets/images');
 assert.ok(fs.existsSync(path.join(imagesDir, 'hero.jpg')), 'hero.jpg must exist');
 assert.ok(fs.existsSync(path.join(imagesDir, 'recipe-avocado-toast.jpg')), 'recipe-avocado-toast.jpg must exist');
 assert.ok(fs.existsSync(path.join(imagesDir, 'recipe-smoothie-bowl.jpg')), 'recipe-smoothie-bowl.jpg must exist');
 console.log('✓ High-resolution photography assets verified');
 
 // Test 7: Config validation
-const configPath = path.resolve('config.json');
+const configPath = path.resolve(import.meta.dirname, '../config.json');
 assert.ok(fs.existsSync(configPath), 'config.json must exist');
 const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
 assert.strictEqual(config.appName, 'SmartCart Mobile');
