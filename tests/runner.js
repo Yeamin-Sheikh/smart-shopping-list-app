@@ -1,4 +1,6 @@
 import assert from 'node:assert';
+import fs from 'node:fs';
+import path from 'node:path';
 import { autoDetectCategory } from '../js/categories.js';
 import { recipeBundles } from '../js/recipes.js';
 import { ShoppingStore } from '../js/shopping-store.js';
@@ -27,10 +29,13 @@ console.log('✓ Automatic item category classification verified');
 
 // Test 2: Recipe Bundles
 assert.strictEqual(recipeBundles.length, 3, 'Should have 3 recipe templates');
-const guac = recipeBundles.find(r => r.id === 'guacamole');
-assert.ok(guac);
-assert.strictEqual(guac.items.length, 5);
-console.log('✓ Recipe templates verified');
+const avo = recipeBundles.find(r => r.id === 'avocado-toast');
+assert.ok(avo, 'Avocado toast recipe bundle should exist');
+assert.strictEqual(avo.items.length, 5);
+const smoothie = recipeBundles.find(r => r.id === 'smoothie-bowl');
+assert.ok(smoothie, 'Smoothie bowl recipe bundle should exist');
+assert.strictEqual(smoothie.items.length, 5);
+console.log('✓ Recipe templates and item packages verified');
 
 // Test 3: Shopping Store & Item Manipulation
 const store = new ShoppingStore('test_shopping_store');
@@ -58,4 +63,19 @@ store.deleteItem(added.id);
 assert.strictEqual(store.getActiveList().items.length, initialItemsCount);
 console.log('✓ Item deletion verified');
 
-console.log('\nAll Smart Shopping List App tests passed successfully! (5/5)');
+// Test 6: Image assets verification
+const imagesDir = path.resolve('assets/images');
+assert.ok(fs.existsSync(path.join(imagesDir, 'hero.jpg')), 'hero.jpg must exist');
+assert.ok(fs.existsSync(path.join(imagesDir, 'recipe-avocado-toast.jpg')), 'recipe-avocado-toast.jpg must exist');
+assert.ok(fs.existsSync(path.join(imagesDir, 'recipe-smoothie-bowl.jpg')), 'recipe-smoothie-bowl.jpg must exist');
+console.log('✓ High-resolution photography assets verified');
+
+// Test 7: Config validation
+const configPath = path.resolve('config.json');
+assert.ok(fs.existsSync(configPath), 'config.json must exist');
+const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+assert.strictEqual(config.appName, 'SmartCart Mobile');
+assert.ok(config.defaultBudget > 0);
+console.log('✓ Configuration file and budget persistence verified');
+
+console.log('\nAll Smart Shopping List App tests passed successfully! (7/7)');

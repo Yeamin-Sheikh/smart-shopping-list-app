@@ -1,0 +1,29 @@
+{
+  "appName": "SmartCart Mobile",
+  "version": "1.2.0",
+  "currency": {
+    "symbol": "$",
+    "code": "USD",
+    "position": "prefix"
+  },
+  "defaultBudget": 75.00,
+  "budgetWarningThresholdPercent": 85,
+  "enableOfflineCache": true,
+  "autoSortByAisle": true,
+  "defaultList": "weekly-groceries",
+  "categories": [
+    "produce",
+    "dairy",
+    "bakery",
+    "meat",
+    "pantry",
+    "frozen",
+    "beverages",
+    "household"
+  ],
+  "preferences": {
+    "compactView": false,
+    "showEstimatedPrices": true,
+    "hapticFeedback": true
+  }
+}

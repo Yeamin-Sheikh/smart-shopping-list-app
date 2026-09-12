@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderItems();
   });
 
-  // Import Recipe
+  // Import Recipe via Dropdown
   importRecipeBtn?.addEventListener('click', () => {
     const selectedId = recipeSelectEl?.value;
     const recipe = recipeBundles.find(r => r.id === selectedId);
@@ -149,6 +149,61 @@ document.addEventListener('DOMContentLoaded', () => {
       renderItems();
     }
   });
+
+  // Recipe Modal Elements
+  const recipeModalOverlay = document.getElementById('recipe-modal-overlay');
+  const recipeModal = document.getElementById('recipe-modal');
+  const recipeModalClose = document.getElementById('recipe-modal-close');
+  const openRecipesModalBtn = document.getElementById('open-recipes-modal-btn');
+  const recipeCardsContainer = document.getElementById('recipe-cards-container');
+
+  // Populate Recipe Inspiration Modal with Rich Imagery
+  if (recipeCardsContainer) {
+    recipeCardsContainer.innerHTML = recipeBundles.map(recipe => `
+      <div class="recipe-card" data-id="${recipe.id}">
+        <img src="assets/images/${recipe.image}" alt="${recipe.name}" class="recipe-card-img" loading="lazy">
+        <div class="recipe-card-info">
+          <div>
+            <h4 class="recipe-card-title">${recipe.name}</h4>
+            <p class="recipe-card-desc">${recipe.description}</p>
+          </div>
+          <div class="recipe-card-actions">
+            <span class="recipe-card-count">${recipe.items.length} fresh ingredients</span>
+            <button class="recipe-card-btn" data-recipe-id="${recipe.id}">+ Add All</button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Handle 1-click batch import from recipe modal cards
+    recipeCardsContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.recipe-card-btn');
+      if (!btn) return;
+      const recipeId = btn.getAttribute('data-recipe-id');
+      const recipe = recipeBundles.find(r => r.id === recipeId);
+      if (recipe) {
+        recipe.items.forEach(item => {
+          store.addItem(item);
+        });
+        renderItems();
+        closeRecipeModal();
+      }
+    });
+  }
+
+  function openRecipeModal() {
+    recipeModalOverlay?.classList.add('open');
+    recipeModal?.classList.add('open');
+  }
+
+  function closeRecipeModal() {
+    recipeModalOverlay?.classList.remove('open');
+    recipeModal?.classList.remove('open');
+  }
+
+  openRecipesModalBtn?.addEventListener('click', openRecipeModal);
+  recipeModalClose?.addEventListener('click', closeRecipeModal);
+  recipeModalOverlay?.addEventListener('click', closeRecipeModal);
 
   // Toggle Mobile Frame vs Desktop Fullscreen
   frameToggleBtn?.addEventListener('click', () => {
@@ -162,4 +217,53 @@ document.addEventListener('DOMContentLoaded', () => {
     store.setActiveList(e.target.value);
     renderItems();
   });
+
+  // Right-Click Context Menu Implementation (User Rule Compliance)
+  const contextMenu = document.getElementById('custom-context-menu');
+  window.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    if (!contextMenu) return;
+    contextMenu.style.left = `${Math.min(e.clientX, window.innerWidth - 180)}px`;
+    contextMenu.style.top = `${Math.min(e.clientY, window.innerHeight - 180)}px`;
+    contextMenu.classList.add('open');
+  });
+
+  window.addEventListener('click', () => {
+    contextMenu?.classList.remove('open');
+  });
+
+  contextMenu?.addEventListener('click', async (e) => {
+    const item = e.target.closest('.context-menu-item');
+    if (!item) return;
+    const action = item.getAttribute('data-action');
+    try {
+      if (action === 'copy') {
+        const sel = window.getSelection()?.toString();
+        if (sel) await navigator.clipboard.writeText(sel);
+      } else if (action === 'paste') {
+        const text = await navigator.clipboard.readText();
+        const active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+          active.value += text;
+        }
+      } else if (action === 'cut') {
+        const active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+          await navigator.clipboard.writeText(active.value);
+          active.value = '';
+        }
+      } else if (action === 'selectall') {
+        const active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA')) {
+          active.select();
+        } else {
+          document.execCommand('selectAll');
+        }
+      }
+    } catch {
+      // Clipboard permissions fallback
+    }
+    contextMenu.classList.remove('open');
+  });
 });
+

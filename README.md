@@ -8,13 +8,14 @@ Smart Cart provides a fast checklist interface for in-store shopping. It organiz
 
 ## Key features
 
-- **Dual display viewport:** Run full-screen on desktop or view inside a mobile simulator frame (iPhone 16 Pro mockup).
-- **Smart category detection:** Automatically files items into Produce, Dairy, Bakery, Meat, Pantry, or Household based on keywords.
+- **Dual display viewport:** Run full-screen on desktop or view inside an interactive mobile simulator frame with Dynamic Island and centering.
+- **Smart category detection:** Automatically files items into Produce, Dairy, Bakery, Meat, Pantry, Frozen, Beverages, or Household based on keywords.
 - **Budget and completion tracker:** Calculates total estimated spending against a preset budget with instant warning alerts.
 - **In-store shopping workflow:** One-tap strike-through for checked items with completion percentage bar.
-- **Recipe ingredient importer:** One-click import of ingredients for common recipes (Fresh Guacamole, Mediterranean Salmon Bowl, Overnight Protein Oats).
+- **Curated recipe bundles:** High-resolution recipe showcase modal with one-click batch import of ingredients (Artisan Avocado Toast Deluxe, Superfood Acai Smoothie Bowl, Mediterranean Salmon Bowl).
 - **Multiple list support:** Switch between Weekly Groceries, BBQ Party Supplies, and custom lists.
-- **Local persistence:** Stores items and list configurations in localStorage.
+- **Context menu support:** Custom right-click menu with Cut, Copy, Paste, and Select All.
+- **Configuration persistence:** `config.json` stores default budgets, category classifications, and user display settings.
 
 ## Project structure
 
@@ -22,7 +23,9 @@ Smart Cart provides a fast checklist interface for in-store shopping. It organiz
 smart-shopping-list-app/
 ├── assets/
 │   ├── images/
-│   │   └── hero.jpg
+│   │   ├── hero.jpg
+│   │   ├── recipe-avocado-toast.jpg
+│   │   └── recipe-smoothie-bowl.jpg
 │   └── svgs/
 │       ├── logo.svg
 │       └── icons.svg
@@ -36,6 +39,7 @@ smart-shopping-list-app/
 │   └── shopping-store.js
 ├── tests/
 │   └── runner.js
+├── config.json
 ├── index.html
 ├── package.json
 └── README.md
@@ -57,7 +61,7 @@ Visit `http://localhost:8000` in your web browser.
 
 ## Running tests
 
-Run the test suite with Node:
+Run the full automated test suite with Node:
 
 ```powershell
 npm test
